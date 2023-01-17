@@ -31,4 +31,9 @@ operation SolveLogisticsOptimizationProblem (qs : Qubit[], x : Double[], cost : 
     for (i in 0 .. Length(result) - 1) {
         x[i] = result[i];
     }
+
+    //Print the results
+    Message($"Total cost: {f(result)}");
+    Message($"Solution vector: {result}");
+    Message($"Constraints: {g(result)}");
 }
