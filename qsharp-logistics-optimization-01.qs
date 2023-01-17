@@ -4,7 +4,13 @@
 
 open Microsoft.Quantum.Optimization;
 
-operation SolveLogisticsOptimizationProblem (qs : Qubit[], x : Double[], cost : Double[,], capacity : Double[,], demand : Double[]) : Unit {
+operation SolveLogisticsOptimizationProblem (qs : Qubit[]) : Unit {
+    // Define the example values
+    let cost = [[3.0, 2.0, 4.0], [2.0, 5.0, 3.0], [4.0, 3.0, 6.0]];
+    let capacity = [[1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0]];
+    let demand = [20.0, 30.0, 40.0];
+    let x = new Double[3];
+
     // Define the objective function as the total cost
     let f(x : Double[]) : Double {
         let cost = Dot(x, MatrixVectorProduct(cost, x));
@@ -37,3 +43,4 @@ operation SolveLogisticsOptimizationProblem (qs : Qubit[], x : Double[], cost : 
     Message($"Solution vector: {result}");
     Message($"Constraints: {g(result)}");
 }
+
